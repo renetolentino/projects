@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Miniframework</title>
+
+		<!-- CSS only -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		<!-- JavaScript Bundle with Popper -->
+		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+		<script>
+			
+			$(document).ready(()=>{
+				let janela = $(window)[0]
+
+				janela = janela['location']['href']
+
+
+
+				janela = janela.replace('http://localhost:8080/', '')
+
+				if(janela.endsWith('#')) {
+					janela.replace('#', '')
+				}
+
+				console.log(janela)
+
+				if(janela == '') {
+					$('#home').addClass('active')
+				} else {
+					$(`#${janela}`).addClass('active')
+				}
+
+				$('a').on('click', e => {
+					if(e.target.id == 'home'){
+						e.target.href = 'http://localhost:8080/'
+					} else {
+						e.target.href = 'http://localhost:8080/' + e.target.id
+					}
+					
+				})
+
+
+			})
+
+		</script>
+	</head>
+
+	<body>
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="#">Logo</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+		    <ul class="navbar-nav">
+		      <li class="nav-item active">
+		        <a class="nav-link" id="home" href="#">Home</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" id="sobre_nos" href="#">Sobre Nós</a>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+		<?= $this->content() ?>
+
+
+	</body>
+
+</html>

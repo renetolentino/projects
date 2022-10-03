@@ -1,0 +1,16 @@
+<h1 class="display-1 bg-light">Sobre Nós</h1>
+<hr />
+<div class="container">
+<?php foreach ($this->view->dados as $info => $informacao) { ?>
+	<div class="card bg-dark text-white mb-4">
+		<div class="card-header">
+			<h4><?=$informacao['titulo']?></h4>
+		</div>
+		<div class="card-body">
+			<?=$informacao['descricao']?>
+		</div>
+	</div>
+
+
+<?php } ?>
+</div>
